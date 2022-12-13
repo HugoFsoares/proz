@@ -1,0 +1,45 @@
+* {
+  font-family: 'Maven Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+header {
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  
+}
+
+ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+nav ul li{
+  padding: 0 16px;
+}
+
+nav ul li:last-child {
+  padding-right: 16px;
+}
+
+main{background-color: rgb(95, 28, 139);color: white;}
+
+section{
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: rgb(95, 28, 139);
+}
+
+div{background: url(/professora/aula-css-03/img/bg_laranja.jpg);
+width: 300px;
+height: 200px;
+border-radius: 10px;
+
+}
