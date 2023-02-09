@@ -1,0 +1,44 @@
+CREATE TABLE cliente (
+ID SERIAL PRIMARY KEY,
+nome VARCHAR(16) NOT NULL,
+sobrenome VARCHAR(24) NOT NULL,
+idade INT,
+pais VARCHAR(4)
+); 
+
+CREATE TABLE pedido (
+ID SERIAL PRIMARY KEY,
+item VARCHAR(48) NOT NULL,
+quantidade INT NOT NULL,
+fk_id_cliente INT not NULL,
+CONSTRAINT fk_cliente FOREIGN key (fk_id_cliente) REFERENCES cliente(ID)
+); 
+INSERT into cliente (nome, sobrenome, idade, pais) VALUES
+('João', 'Alvez', 48, 'BR'),
+('Roberto', 'Dinamite', 36, 'BR'),
+('Marta', 'Silva', 40, 'ARG'),
+('For', 'Miga', 30, 'EUA'),
+('Ed', 'Gaga', 20, 'UK'),
+('Raissa', 'Fadinha', 25, 'EUR'); INSERT INTO pedido (item, quantidade, fk_id_cliente) VALUES
+('teclado', 1, 4),
+('mouse', 2, 4),
+('monitor', 8, 3),
+('teclado', 1, 1),
+('mousepad', 4, 2); 
+--CONSULTA 1
+SELECT * FROM pedido
+INNER join cliente
+ON pedido.fk_id_cliente = cliente.id
+--CONSULTA 2
+SELECT * FROM pedido
+RIGHT join cliente
+on pedido.fk_id_cliente = cliente.id --CONSULTA 3 // APENAS conferir cliente que não fez pedido
+SELECT * FROM pedido
+RIGHT JOIN cliente
+on pedido.fk_id_cliente = cliente.id
+WHERE pedido.id is NULL
+--QUARTA CONSULTA // APENAS conferir cliente que não fez pedido
+SELECT pedido.id as pedido_id, cliente.id as cliente_id
+FROM pedido
+JOIN cliente
+ON pedido.fk_id_cliente = cliente.id
